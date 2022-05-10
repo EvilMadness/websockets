@@ -28,6 +28,7 @@
     "dependencies": {
         "autoprefixer": "10.4.5",
         "vue-chat-scroll": "^1.4.0",
-        "vue-moment": "^4.1.0"
+        "vue-moment": "^4.1.0",
+        "vuetify": "^2.6.5"
     }
 }

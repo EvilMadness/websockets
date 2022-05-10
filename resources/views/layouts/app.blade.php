@@ -68,6 +68,9 @@
                                     <a class="dropdown-item" href="{{ url('/chats') }}">
                                         Chats
                                     </a>
+                                    <a class="dropdown-item" href="{{ url('/test') }}">
+                                        Test
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
