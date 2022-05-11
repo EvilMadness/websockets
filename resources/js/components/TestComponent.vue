@@ -1,68 +1,71 @@
 <template>
-    <div class="card">
-        <div class="card-header">
-            <input type="text" placeholder="ESTUDIANTE">
-        </div>
-        <div class="card-body">
-            {{horarios}}
-                <template v-for="(day, idx) in days">
-                    <v-checkbox
-                        v-model="horarios.dias.day"
-                        :label="day.dia"
-                        :value="day"
-                    ></v-checkbox>
-                    {{idx}}
-<!--                    <input type="text" v-model="horarios.dias[idx]">-->
-<!--                    <input type="text" v-model="horarios.dias[idx]">-->
-                </template>
-        </div>
-    </div>
+    <v-row>
+        <v-col cols="8">
+            <v-card>
+                <div class="card-header">
+                    <v-text-field
+                        v-model="horarios.estudiante"
+                        label="Estudiante"
+                    ></v-text-field>
+                </div>
+                <div class="card-body">
+                    <template v-for="(dia, idx) in dias">
+                        <v-row>
+                            <v-col>
+                                <v-checkbox
+                                    v-model="dia.check"
+                                    :label="dia.dia"
+                                    :value="!dia.check"
+                                ></v-checkbox>
+                            </v-col>
+                                <v-col cols="5">
+                                    <v-text-field
+                                        :disabled="!dia.check"
+                                        type="time"
+                                        v-model="dia.entrada"
+                                        label="Entrada"
+                                    ></v-text-field>
+                                </v-col>
+                                <v-col cols="5">
+                                    <v-text-field
+                                        :disabled="!dia.check"
+                                        type="time"
+                                        v-model="dia.salida"
+                                        label="Salida"
+                                    ></v-text-field>
+                                </v-col>
+                        </v-row>
+                    </template>
+                </div>
+            </v-card>
+        </v-col>
+        <v-col cols="4">
+            <v-card>
+                {{ horarios }} {{ dias }}
+            </v-card>
+        </v-col>
+    </v-row>
+
 </template>
 
 <script>
 export default {
     data() {
         return {
-            days: [
-                {
-                    id: 1,
-                    dia: 'Lunes'
-                },
-                {
-                    id: 2,
-                    dia: 'Martes'
-                },
-                {
-                    id: 3,
-                    dia: 'Miercoles'
-                },
-                {
-                    id: 4,
-                    dia: 'Jueves'
-                },
-                {
-                    id: 5,
-                    dia: 'Viernes'
-                }
-            ],
             horarios: {
                 estudiante: null,
-                dias: {
-                    dia: null,
-                    entrada: null,
-                    salida: null
-                }
             },
+            dias: [
+                {id: 1, dia: 'Lunes', entrada: null, salida: null, check: false },
+                {id: 2, dia: 'Martes', entrada: null, salida: null, check: false },
+                {id: 3, dia: 'Miércoles', entrada: null, salida: null, check: false },
+                {id: 4, dia: 'Jueves', entrada: null, salida: null, check: false },
+                {id: 5, dia: 'Viernes', entrada: null, salida: null, check: false },
+            ],
         }
     },
 }
 </script>
 
 <style scoped>
-.tarjetas {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    /*grid-gap: 5px;*/
-    /*grid-auto-rows: minmax(60px, 60px);*/
-}
 </style>
